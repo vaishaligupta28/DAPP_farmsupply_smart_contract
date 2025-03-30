@@ -17,7 +17,7 @@ import "../access/ConsumerAccessRole.sol";
 *   the end-user can authenticate that food item and consume that without any worry.
 */
 
-contract FarmSupplyChain is Ownable, FarmerRole, DistributorRole, RetailerRole, ConsumerRole {
+contract FarmSupplyChainManager is Ownable, FarmerRole, DistributorRole, RetailerRole, ConsumerRole {
     
     // Define contract variables
     uint256 public productCode;
