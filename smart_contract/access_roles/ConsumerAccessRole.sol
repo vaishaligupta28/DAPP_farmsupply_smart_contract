@@ -4,8 +4,8 @@ pragma solidity ^0.8.0;
 import "./Roles.sol";
 import "../utils/Context.sol";
 
-// Define a contract 'ConsumerRole' to manage this role - add, remove, check
-contract ConsumerRole is Context {
+// Define a contract 'ConsumerAccessRole' to manage this role - add, remove, check
+contract ConsumerAccessRole is Context {
     using Roles for Roles.Role;
     // Define 2 events, one for Adding, and other for Removing
     event ConsumerAdded(address indexed account);

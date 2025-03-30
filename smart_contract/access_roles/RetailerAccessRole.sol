@@ -4,8 +4,8 @@ pragma solidity ^0.8.0;
 import "./Roles.sol";
 import "../utils/Context.sol";
 
-// Define a contract 'RetailerRole' to manage this role - add, remove, check
-contract RetailerRole is Context {
+// Define a contract 'RetailerAccessRole' to manage this role - add, remove, check
+contract RetailerAccessRole is Context {
     using Roles for Roles.Role;
 
     // Define 2 events, one for Adding, and other for Removing
