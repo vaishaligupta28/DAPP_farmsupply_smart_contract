@@ -5,7 +5,7 @@ import "../utils/Context.sol";
 // By default, the owner account will be the one that deploys the contract.
 // This * can later be changed with {transferOwnership}.
 
-contract Ownable is Context {
+contract OwnershipTransferContract is Context {
     address private _owner;
 
     // Define an Event

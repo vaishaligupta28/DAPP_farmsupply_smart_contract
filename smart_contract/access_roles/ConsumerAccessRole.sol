@@ -1,5 +1,6 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >=0.8.2 <0.9.0;
 
 import "./Roles.sol";
 import "../utils/Context.sol";
@@ -15,7 +16,7 @@ contract ConsumerAccessRole is Context {
     Roles.Role private consumers;
 
     // In the constructor make the address that deploys this contract the 1st consumer
-    constructor() public {
+    constructor() {
         //_addConstructor(_msgSender());
         _addConsumer(_msgSender());
     }

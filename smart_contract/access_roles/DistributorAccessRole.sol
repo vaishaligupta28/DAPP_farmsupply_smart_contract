@@ -4,50 +4,52 @@ pragma solidity ^0.8.0;
 import "./Roles.sol";
 import "../utils/Context.sol";
 
-// Define a contract 'DistributorAccessRole' to manage this role - add, remove, check
-contract DistributorAccessRole is Context {
+// Define a contract 'RetailerAccessRole' to manage this role - add, remove, check
+contract RetailerAccessRole is Context {
     using Roles for Roles.Role;
-    // Define 2 events, one for Adding, and other for Removing
-    event DistributorAdded(address indexed account);
-    event DistributorRemoved(address indexed account);
-    // Define a struct 'distributors' by inheriting from 'Roles' library, struct Role
-    Roles.Role private distributors;
 
-    // In the constructor make the address that deploys this contract the 1st distributor
-    constructor() public {
-        _addDistributor(_msgSender());
+    // Define 2 events, one for Adding, and other for Removing
+    event RetailerAdded(address indexed account);
+    event RetailerRemoved(address indexed account);
+
+    // Define a struct 'retailers' by inheriting from 'Roles' library, struct Role
+    Roles.Role private retailers;
+
+    // In the constructor make the address that deploys this contract the 1st retailer
+    constructor() {
+        _addRetailer(_msgSender());
     }
 
     // Define a modifier that checks to see if _msgSender() has the appropriate role
-    modifier onlyDistributor() {
-        require(isDistributor(_msgSender()));
+    modifier onlyRetailer() {
+        require(isRetailer(_msgSender()));
         _;
     }
 
-    // Define a function 'isDistributor' to check this role
-    function isDistributor(address account) public view returns (bool) {
-        return distributors.has(account);
+    // Define a function 'isRetailer' to check this role
+    function isRetailer(address account) public view returns (bool) {
+        return retailers.has(account);
     }
 
-    // Define a function 'addDistributor' that adds this role
-    function addDistributor(address account) public onlyDistributor {
-        _addDistributor(account);
+    // Define a function 'addRetailer' that adds this role
+    function addRetailer(address account) public onlyRetailer {
+        _addRetailer(account);
     }
 
-    // Define a function 'renounceDistributor' to renounce this role
-    function renounceDistributor() public {
-        _removeDistributor(_msgSender());
+    // Define a function 'renounceRetailer' to renounce this role
+    function renounceRetailer() public {
+        _removeRetailer(_msgSender());
     }
 
-    // Define an internal function '_addDistributor' to add this role, called by 'addDistributor'
-    function _addDistributor(address account) internal {
-        distributors.add(account);
-        emit DistributorAdded(account);
+    // Define an internal function '_addRetailer' to add this role, called by 'addRetailer'
+    function _addRetailer(address account) internal {
+        retailers.add(account);
+        emit RetailerAdded(account);
     }
 
-    // Define an internal function '_removeDistributor' to remove this role, called by 'removeDistributor'
-    function _removeDistributor(address account) internal {
-        distributors.remove(account);
-        emit DistributorRemoved(account);
+    // Define an internal function '_removeRetailer' to remove this role, called by 'removeRetailer'
+    function _removeRetailer(address account) internal {
+        retailers.remove(account);
+        emit RetailerRemoved(account);
     }
 }
